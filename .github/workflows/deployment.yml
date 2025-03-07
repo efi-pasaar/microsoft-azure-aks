@@ -30,7 +30,7 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        auth-type: 'managed-identity'
+        auth-type: 'identity'
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
