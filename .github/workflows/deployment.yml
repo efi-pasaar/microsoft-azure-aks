@@ -29,8 +29,7 @@ jobs:
     - name: 'Login to Azure'
       uses: azure/login@v1
       with:
-        creds: ${{ secrets.SUBSCRIPTION_ID }}
-        auth-type: 'identity'
+        creds: ${{ env.SUBSCRIPTION_ID }}
 
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v1
@@ -45,4 +44,5 @@ jobs:
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
+
       run: terraform apply -auto-approve -input=false
